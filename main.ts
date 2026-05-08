@@ -1,15 +1,15 @@
 const tela = require("readline-sync")
 const cadastro = require("./src/cadastro_aluno.ts")
+const { telaCadastrarNotas } = require("./src/cadastrar_notas.ts")
 
 // função inicial para chamar as telas
 function main() {
 
   let loop = true //inicializa o loop  
 
-  console.log("******************* MENU PRINCIPAL ***************************")
   while(loop) { // roda até quando o usuário não digitar '0'
-    console.log("1 - Cadastrar aluno\n2 - Adicionar Notas\n3 - Listar\n0 - Sair")
-   const opcao:string = tela.question("Deseja continuar? ")
+    console.log("1 - Cadastrar aluno |  2 - Listar Aluno | 3 - Cadastrar Notas | 0 - Sair")
+    const opcao:string = tela.question("Deseja continuar? ")
 
     switch(opcao) {
       case "0":
@@ -18,11 +18,15 @@ function main() {
       case "1":
         cadastro.telaCadastro()
       break
+
       case "2":
-      break
-      case "3":
         cadastro.telaListaAlunos()
       break
+
+      case "3":
+        telaCadastrarNotas()
+      break
+      
       default: // caso não coloque a opção valida cai aqui 
         console.log("Opção invalida!")
       break
